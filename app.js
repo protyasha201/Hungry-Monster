@@ -7,7 +7,7 @@ searchNow.addEventListener("click", () => {
     const eraseDetail = document.getElementById("food-details");
     erasePrevious.innerText = "";
     eraseDetail.style.display = "none";
-    const url = fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
+    fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
         .then(res => res.json())
         .then(data => {
             const foodList = data.meals;
@@ -33,6 +33,7 @@ searchNow.addEventListener("click", () => {
                 foodsContainer.appendChild(foodDiv);
             });
         })
+        .catch(err => console.log(err));
 })
 //showing details
 
