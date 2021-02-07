@@ -10,15 +10,16 @@ searchNow.addEventListener("click", () => {
                 const foodImages = food.strMealThumb;
                 const foodsContainer = document.getElementById("foodsContainer");
                 const searchedFor = document.getElementById("searchedFor");
-                searchedFor.innerText = searchMeal.value;
                 const foodDiv = document.createElement("div");
                 foodDiv.className = "food-items";
 
                 const foodInfo = `
+                <div onclick="display('${foodNames}')">
                 <div class="image">
                     <img src="${foodImages}">
                 </div>
                 <div>${foodNames}</div>
+                </div>
                 `;
 
                 foodDiv.innerHTML = foodInfo;
@@ -26,3 +27,7 @@ searchNow.addEventListener("click", () => {
             });
         })
 })
+
+function display(name){
+    console.log(name);
+}
