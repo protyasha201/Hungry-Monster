@@ -1,6 +1,5 @@
 *{
     box-sizing: border-box;
-    list-style: none;
     text-decoration: none;
 }
 body{
@@ -21,8 +20,12 @@ body{
 .navbar ul{
     display: flex;
 }
+.navbar ul li{
+    list-style: none;
+}
 .navbar a{
     margin: 50px;
+    transition: all ease .7s;
     font-size: 20px;
     color: white;
 }
@@ -50,6 +53,9 @@ a:hover{
     background-color: rgb(219, 241, 241);
     font-size: 20px;
 }
+.search input:hover{
+    background-color: rgb(240, 230, 230);
+}
 .search button{
     height: 50px;
     width: 100px;
@@ -59,7 +65,12 @@ a:hover{
     cursor: pointer;
     border-bottom-right-radius: 10px;
     color: white;
+    transition: all ease .3s;
     font-size: 20px;
+}
+.search button:hover{
+    background-color: rgb(250, 164, 149);
+    font-size: 22px;
 }
 #foodsContainer{
     display: grid;
@@ -76,8 +87,42 @@ a:hover{
     text-align: center;
     font-weight: 900;
     color: rgb(90, 94, 90);
+    box-shadow: 1px 1px 10px black;
 }
 .image img{
     width: 100%;
     border-radius: 10px;
+}
+#food-details{
+    color: black;
+    width: 400px;
+    font-family: 'Roboto', sans-serif;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 10px black;
+    display: none;
+}
+#food-details h2{
+    font-weight: 900;
+    font-size: 40px;
+    margin-left: 8px;
+}
+#food-details h3{
+    margin-left: 8px;
+}
+.detail-image{
+    width: 400px;
+}
+.detail-image img{
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    border: 1px;
+}
+.ingredient-list{
+    list-style: square;
+    position: relative;
+    right: 12px;
 }
