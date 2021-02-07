@@ -4,16 +4,25 @@ searchNow.addEventListener("click", () => {
     const url = fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
         .then(res => res.json())
         .then(data => {
-            for (let i = 0; i < data.meals.length; i++) {
-                const foodNames = data.meals[i].strMeal;
-                const foods = document.getElementById("foods");
+            const foodList = data.meals;
+            foodList.forEach(food => {
+                const foodNames = food.strMeal;
+                const foodImages = food.strMealThumb;
+                const foodsContainer = document.getElementById("foodsContainer");
+                const searchedFor = document.getElementById("searchedFor");
+                searchedFor.innerText = searchMeal.value;
                 const foodDiv = document.createElement("div");
-                const image = document.createElement("img");
                 foodDiv.className = "food-items";
-                foodDiv.innerText = foodNames;
-                foods.appendChild(foodDiv);
-                // console.log(data.meals[i].strMeal);
-            }
-        });
 
+                const foodInfo = `
+                <div class="image">
+                    <img src="${foodImages}">
+                </div>
+                <div>${foodNames}</div>
+                `;
+
+                foodDiv.innerHTML = foodInfo;
+                foodsContainer.appendChild(foodDiv);
+            });
+        })
 })
