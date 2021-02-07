@@ -5,6 +5,7 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: rgb(76, 76, 126);
     font-family: monospace;
 }
 .navbar{
@@ -125,4 +126,8 @@ a:hover{
     list-style: square;
     position: relative;
     right: 12px;
+}
+.food-name{
+    margin-top: 2%;
+    margin-bottom: 10px;
 }

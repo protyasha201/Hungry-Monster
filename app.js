@@ -1,6 +1,8 @@
 const searchNow = document.getElementById("searchNow");
 searchNow.addEventListener("click", () => {
     const searchMeal = document.getElementById("searchMeal");
+    const searchedMealIs = searchMeal.value;
+    checkAvailability(searchedMealIs);
     const url = fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
         .then(res => res.json())
         .then(data => {
@@ -19,7 +21,7 @@ searchNow.addEventListener("click", () => {
                     <div class="image">
                         <img src="${foodImages}">
                     </div>
-                    <div>${foodNames}</div>
+                    <div class="food-name">${foodNames}</div>
                 </div>
                 `;
 
@@ -50,8 +52,31 @@ function display(id, images, foodName) {
                 <li>${measures.strMeasure4} ${ingredients.strIngredient4}</li>
                 <li>${measures.strMeasure5} ${ingredients.strIngredient5}</li>
                 <li>${measures.strMeasure6} ${ingredients.strIngredient6}</li>
+                <li>${measures.strMeasure7} ${ingredients.strIngredient7}</li>
+                <li>${measures.strMeasure8} ${ingredients.strIngredient8}</li>
+                <li>${measures.strMeasure9} ${ingredients.strIngredient9}</li>
+                <li>${measures.strMeasure10} ${ingredients.strIngredient10}</li>
             </ul>
         `;
             foodDetails.innerHTML = details;
         })
+}
+function checkAvailability(nameIs){
+    fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
+    .then(res => res.json())
+    .then(data => {
+        const categories = data.categories;
+        const capitalNameIs = nameIs.toUpperCase();
+        let isAvailable = false;
+        categories.forEach(item => {
+            const foodCategoryName = item.strCategory;
+            const capitalFoodCategory = foodCategoryName.toUpperCase();
+            if(capitalNameIs === capitalFoodCategory){
+                isAvailable = true;
+            }
+            else{
+                isAvailable = false;
+            }
+        });
+    })
 }
