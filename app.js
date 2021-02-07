@@ -66,29 +66,3 @@ function display(id, images, foodName) {
             foodDetails.innerHTML = details;
         })
 }
-
- //showing alert
-    
- const searchedMealIs = searchMeal.value;
- function checkAvailability(nameIs){
-     fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
- .then(res => res.json())
- .then(data => {
-     const categories = data.categories;
-     const capitalNameIs = nameIs.toUpperCase();
-     let isAvailable = false;
-     categories.forEach(item => {
-         const foodCategoryName = item.strCategory;
-         const capitalFoodCategory = foodCategoryName.toUpperCase();
-         if(capitalNameIs === capitalFoodCategory){
-             isAvailable = true;
-         }
-         else{
-             isAvailable = false;
-         }
-     });
-     if(isAvailable == false){
-         alert("Not Available");
-     }
- })
-}
