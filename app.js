@@ -21,13 +21,13 @@ searchNow.addEventListener("click", () => {
                 foodDiv.className = "food-items";
 
                 const foodInfo = `
-            <div onclick="display(${foodId}, '${foodImages}', '${foodNames}')">
-            <div class="image">
-            <img src="${foodImages}">
-            </div>
-            <div class="food-name">${foodNames}</div>
-            </div>
-            `;
+                <div onclick="display(${foodId}, '${foodImages}', '${foodNames}')">
+                    <div class="image">
+                        <img src="${foodImages}">
+                    </div>
+                    <div class="food-name">${foodNames}</div>
+                </div>
+                `;
 
                 foodDiv.innerHTML = foodInfo;
                 foodsContainer.appendChild(foodDiv);
