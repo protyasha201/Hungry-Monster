@@ -1,8 +1,9 @@
+// Search button click-handler
+
 const searchNow = document.getElementById("searchNow");
 searchNow.addEventListener("click", () => {
     const searchMeal = document.getElementById("searchMeal");
     const searchedMealIs = searchMeal.value;
-    checkAvailability(searchedMealIs);
     const url = fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
         .then(res => res.json())
         .then(data => {
@@ -30,6 +31,7 @@ searchNow.addEventListener("click", () => {
             });
         })
 })
+//showing details
 
 function display(id, images, foodName) {
     fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + id + '')
@@ -60,23 +62,4 @@ function display(id, images, foodName) {
         `;
             foodDetails.innerHTML = details;
         })
-}
-function checkAvailability(nameIs){
-    fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-    .then(res => res.json())
-    .then(data => {
-        const categories = data.categories;
-        const capitalNameIs = nameIs.toUpperCase();
-        let isAvailable = false;
-        categories.forEach(item => {
-            const foodCategoryName = item.strCategory;
-            const capitalFoodCategory = foodCategoryName.toUpperCase();
-            if(capitalNameIs === capitalFoodCategory){
-                isAvailable = true;
-            }
-            else{
-                isAvailable = false;
-            }
-        });
-    })
 }
