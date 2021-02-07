@@ -4,7 +4,9 @@ const searchNow = document.getElementById("searchNow");
 searchNow.addEventListener("click", () => {
     const searchMeal = document.getElementById("searchMeal");
     const erasePrevious = document.getElementById("foodsContainer");
+    const eraseDetail = document.getElementById("food-details");
     erasePrevious.innerText = "";
+    eraseDetail.style.display = "none";
     const url = fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
         .then(res => res.json())
         .then(data => {
