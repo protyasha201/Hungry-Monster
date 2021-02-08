@@ -7,6 +7,9 @@ searchNow.addEventListener("click", () => {
     const eraseDetail = document.getElementById("food-details");
     erasePrevious.innerText = "";
     eraseDetail.style.display = "none";
+    const searchMealUppercase = searchMeal.value.toUpperCase();
+
+    if(searchMealUppercase == "BEEF" || searchMealUppercase == "CHICKEN" || searchMealUppercase == "DESSERT" || searchMealUppercase == "LAMB" || searchMealUppercase == "MISCELLANEOUS" || searchMealUppercase == "PASTA" || searchMealUppercase == "PORK" || searchMealUppercase == "SEAFOOD" || searchMealUppercase == "SIDE" || searchMealUppercase == "STARTER" || searchMealUppercase == "VEGAN" || searchMealUppercase == "VEGETARIAN" || searchMealUppercase == "BREAKFAST" || searchMealUppercase == "GOAT"){
     fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
         .then(res => res.json())
         .then(data => {
@@ -33,8 +36,13 @@ searchNow.addEventListener("click", () => {
                 foodsContainer.appendChild(foodDiv);
             });
         })
-        .catch(err => console.log(err));
+    }
+    else{
+        alert("Sorry, Not Available!");
+    }
 })
+
+
 //showing details
 
 function display(id, images, foodName) {
