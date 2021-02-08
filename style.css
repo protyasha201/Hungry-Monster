@@ -147,3 +147,10 @@ a:hover{
 #category-list h2{
     font-size: 30px;
 }
+#alert-message{
+    color: white;
+    font-size: 30px;
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}

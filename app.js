@@ -2,6 +2,8 @@
 
 const searchNow = document.getElementById("searchNow");
 searchNow.addEventListener("click", () => {
+
+    //check by category name
     const searchMeal = document.getElementById("searchMeal");
     const erasePrevious = document.getElementById("foodsContainer");
     const eraseDetail = document.getElementById("food-details");
@@ -12,12 +14,9 @@ searchNow.addEventListener("click", () => {
     fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
         .then(res => res.json())
         .then(data => {
-            const eraseCategoryList = document.getElementById("category-list");
-            eraseCategoryList.style.display = "none";
             const foodList = data.meals;
             if (foodList == null) {
-                alert("Sorry, Not Available");
-                eraseCategoryList.style.display = "block";
+                checkByName();
             }
             else {
                 foodList.forEach(food => {
@@ -44,6 +43,52 @@ searchNow.addEventListener("click", () => {
             }
         })
 })
+
+
+//check by meal name
+
+function checkByName(){
+    const searchMeal = document.getElementById("searchMeal");
+    const erasePrevious = document.getElementById("foodsContainer");
+    const eraseDetail = document.getElementById("food-details");
+    const alertMessage = document.getElementById("alert-message");
+
+    erasePrevious.innerText = "";
+    eraseDetail.style.display = "none";
+
+    fetch('https://www.themealdb.com/api/json/v1/1/search.php?s='+searchMeal.value+'')
+        .then(res => res.json())
+        .then(data => {
+            const foodList = data.meals;
+            if (foodList == null) {
+                alertMessage.style.display = "block";
+            }
+            else {
+                foodList.forEach(food => {
+                    const foodNames = food.strMeal;
+                    const foodImages = food.strMealThumb;
+                    const foodId = food.idMeal;
+                    const foodsContainer = document.getElementById("foodsContainer");
+                    const searchedFor = document.getElementById("searchedFor");
+                    const foodDiv = document.createElement("div");
+                    foodDiv.className = "food-items";
+
+                    const foodInfo = `
+                <div class="container" onclick="display(${foodId}, '${foodImages}', '${foodNames}')">
+                    <div class="image">
+                        <img src="${foodImages}">
+                    </div>
+                    <div class="food-name">${foodNames}</div>
+                </div>
+                `;
+
+                    foodDiv.innerHTML = foodInfo;
+                    foodsContainer.appendChild(foodDiv);
+                });
+            }
+        })
+}
+
 
 
 //showing details
