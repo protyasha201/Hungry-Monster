@@ -79,3 +79,19 @@ function display(id, images, foodName) {
             foodDetails.innerHTML = details;
         })
 }
+
+const home = document.getElementById("home-link");
+home.addEventListener("click", () => {
+    document.getElementById("searchMeal").value = "";
+    const showNav = document.querySelector(".navbar");
+    const showSearch = document.querySelector(".search");
+    const showCategory = document.querySelector("#category-list");
+    const hideContainer = document.getElementById("foodsContainer");
+    const hideDetails = document.getElementById("food-details");
+
+    showNav.style.display = "block";
+    showSearch.style.display = "block";
+    showCategory.style.display = "block";
+    hideContainer.style.display = "none";
+    hideDetails.style.display = "none";
+})
