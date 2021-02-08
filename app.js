@@ -9,8 +9,6 @@ searchNow.addEventListener("click", () => {
     erasePrevious.innerText = "";
     eraseDetail.style.display = "none";
 
-    const searchMealUppercase = searchMeal.value.toUpperCase();
-
     fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + searchMeal.value + '')
         .then(res => res.json())
         .then(data => {
