@@ -127,3 +127,7 @@ a:hover{
     position: relative;
     right: 12px;
 }
+.container{
+    width: 100%;
+    height: 370px;
+}

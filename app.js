@@ -21,7 +21,7 @@ searchNow.addEventListener("click", () => {
                 foodDiv.className = "food-items";
 
                 const foodInfo = `
-                <div onclick="display(${foodId}, '${foodImages}', '${foodNames}')">
+                <div class="container" onclick="display(${foodId}, '${foodImages}', '${foodNames}')">
                     <div class="image">
                         <img src="${foodImages}">
                     </div>
