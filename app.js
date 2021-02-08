@@ -80,6 +80,8 @@ function display(id, images, foodName) {
         })
 }
 
+
+//home button click handler
 const home = document.getElementById("home-link");
 home.addEventListener("click", () => {
     document.getElementById("searchMeal").value = "";
