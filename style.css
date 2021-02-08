@@ -92,7 +92,12 @@ a:hover{
 }
 .image img{
     width: 100%;
+    transition: all .5s ease;
     border-radius: 10px;
+}
+.image img:hover{
+    opacity: .7;
+    width: 100.50%;
 }
 #food-details{
     color: black;
