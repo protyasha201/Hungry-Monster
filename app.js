@@ -17,6 +17,7 @@ searchNow.addEventListener("click", () => {
             const foodList = data.meals;
             if (foodList == null) {
                 alert("Sorry, Not Available");
+                eraseCategoryList.style.display = "block";
             }
             else {
                 foodList.forEach(food => {
